@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nuevo restaurante - UberITS</title>
+</head>
+<body>
+    <h1>Crear restaurante</h1>
+
+    <form th:action="@{/restaurantes}"
+          th:object="${restauranteForm}"
+          method="post">
+
+        <label for="nombre">Nombre del restaurante:</label>
+
+        <input id="nombre" type="text" th:field="*{nombre}">
+
+        <p th:if="${#fields.hasErrors('nombre')}"
+           th:errors="*{nombre}">
+            Error de validación
+        </p>
+
+        <button type="submit">Guardar restaurante</button>
+    </form>
+
+    <p><a th:href="@{/restaurantes}">Volver a restaurantes</a></p>
+</body>
+</html>

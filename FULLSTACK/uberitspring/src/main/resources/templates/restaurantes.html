@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restaurantes UberITS</title>
+</head>
+<body>
+    <h1>Restaurantes UberITS</h1>
+
+    <p th:if="${mensaje}" th:text="${mensaje}"></p>
+
+    <p>
+        <a th:href="@{/restaurantes/nuevo}">Crear restaurante</a>
+    </p>
+
+    <p th:if="${#lists.isEmpty(restaurantes)}">
+        Todavía no hay restaurantes registrados.
+    </p>
+
+    <ul>
+        <li th:each="restaurante : ${restaurantes}"
+            th:text="${restaurante.nombre()}">
+            Nombre del restaurante
+        </li>
+    </ul>
+</body>
+</html>
